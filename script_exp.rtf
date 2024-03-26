@@ -1,0 +1,140 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2759
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red153\green168\blue186;\red32\green32\blue32;\red88\green118\blue71;
+\red173\green173\blue173;\red109\green109\blue109;\red86\green132\blue173;\red191\green100\blue38;}
+{\*\expandedcolortbl;;\cssrgb\c66275\c71765\c77647;\cssrgb\c16863\c16863\c16863;\cssrgb\c41569\c52941\c34902;
+\cssrgb\c73333\c73333\c73333;\cssrgb\c50196\c50196\c50196;\cssrgb\c40784\c59216\c73333;\cssrgb\c80000\c47059\c19608;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs24 \cf2 \cb3 \expnd0\expndtw0\kerning0
+\outl0\strokewidth0 \strokec2 #include \cf4 \strokec4 <Arduino.h>\cf5 \cb1 \strokec5 \
+\cf2 \cb3 \strokec2 #include \cf4 \strokec4 <OneWire.h>\cf5 \cb1 \strokec5 \
+\cf2 \cb3 \strokec2 #include \cf4 \strokec4 <DallasTemperature.h>\cf5 \cb1 \strokec5 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf6 \cb3 \strokec6 // put function declarations here:\cf5 \cb1 \strokec5 \
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb3 \strokec2 #define ONE_WIRE_BUS \cf7 \strokec7 32\cf5 \cb1 \strokec5 \
+\
+\cf2 \cb3 \strokec2 OneWire oneWire(ONE_WIRE_BUS);\cf5 \cb1 \strokec5 \
+\cf2 \cb3 \strokec2 float temp=\cf7 \strokec7 0\cf2 \strokec2 ;\cf5 \cb1 \strokec5 \
+\cf2 \cb3 \strokec2 DallasTemperature sensors(&oneWire);\cf5 \cb1 \strokec5 \
+\
+\cf2 \cb3 \strokec2 void setup() \{\cf5 \cb1 \strokec5 \
+\cf2 \cb3 \strokec2   Serial.begin(\cf7 \strokec7 921600\cf2 \strokec2 );\cf5 \cb1 \strokec5 \
+\cf2 \cb3 \strokec2   Serial.println(\cf4 \strokec4 "Initializing OK"\cf2 \strokec2 );\cf5 \cb1 \strokec5 \
+\cf2 \cb3 \strokec2   sensors.begin();\cf5 \cb1 \strokec5 \
+\cf2 \cb3 \strokec2   sensors.setWaitForConversion(\cf8 \strokec8 false\cf2 \strokec2 );\cf5 \cb1 \strokec5 \
+\cf2 \cb3 \strokec2 \}\cf5 \cb1 \strokec5 \
+\
+\cf2 \cb3 \strokec2 void loop() \{\cf5 \cb1 \strokec5 \
+\cf2 \cb3 \strokec2   sensors.requestTemperatures();\cf5 \cb1 \strokec5 \
+\cf2 \cb3 \strokec2   delay(\cf7 \strokec7 1000\cf2 \strokec2 );\cf5 \cb1 \strokec5 \
+\cf2 \cb3 \strokec2   temp = sensors.getTempCByIndex(\cf7 \strokec7 0\cf2 \strokec2 );\cf5 \cb1 \strokec5 \
+\cf2 \cb3 \strokec2   Serial.print(\cf4 \strokec4 "Temp : "\cf2 \strokec2 ) ; Serial.println(temp);\cf5 \cb1 \strokec5 \
+\cf2 \cb3 \strokec2   delay(\cf7 \strokec7 1000\cf2 \strokec2 );\cf5 \cb1 \strokec5 \
+\cf2 \cb3 \strokec2 \}\
+\
+\pard\pardeftab720\partightenfactor0
+\cf6 \strokec6 /* Basic 2xDS18B20 code for serial monitor, bluetooth, Excel or w.h.y.\cf5 \cb1 \strokec5 \
+\cf6 \cb3 \strokec6  Derived from Hacktronics. Use their address sniffer and substitute your \cf5 \cb1 \strokec5 \
+\cf6 \cb3 \strokec6  numbers. Use Hacktronics connections diagram. \cf5 \cb1 \strokec5 \
+\cf6 \cb3 \strokec6  Stay away from using parasite power\cf5 \cb1 \strokec5 \
+\cf6 \cb3 \strokec6  -127C means bad connection\cf5 \cb1 \strokec5 \
+\cf6 \cb3 \strokec6  85 means you haven't gotten a read yet, probably wrong order of commands\cf5 \cb1 \strokec5 \
+\cf6 \cb3 \strokec6  Use your own LCD connections\cf5 \cb1 \strokec5 \
+\cf6 \cb3 \strokec6  */\cf5 \cb1 \strokec5 \
+\
+\cf2 \cb3 \strokec2 #include \cf4 \strokec4 <OneWire.h>\cf5 \cb1 \strokec5 \
+\cf2 \cb3 \strokec2 #include \cf4 \strokec4 <DallasTemperature.h>\cf5 \cb1 \strokec5 \
+\
+\cf6 \cb3 \strokec6 // Data wire is plugged into pin 3 on the Arduino\cf5 \cb1 \strokec5 \
+\cf2 \cb3 \strokec2 #define ONE_WIRE_BUS \cf7 \strokec7 32\cf5 \cb1 \strokec5 \
+\
+\cf6 \cb3 \strokec6 // Setup a oneWire instance to communicate with any OneWire devices\cf5 \cb1 \strokec5 \
+\cf2 \cb3 \strokec2 OneWire oneWire(ONE_WIRE_BUS);\cf5 \cb1 \strokec5 \
+\
+\cf6 \cb3 \strokec6 // Pass our oneWire reference to Dallas Temperature.\cf5 \cb1 \strokec5 \
+\cf2 \cb3 \strokec2 DallasTemperature sensors(&oneWire);\cf5 \cb1 \strokec5 \
+\
+\cf2 \cb3 \strokec2 float tempC,Temp1;  \cf5 \cb1 \strokec5 \
+\
+\cf6 \cb3 \strokec6 //sensorValue function\cf5 \cb1 \strokec5 \
+\cf2 \cb3 \strokec2 float sensorValue ()\cf5 \cb1 \strokec5 \
+\cf2 \cb3 \strokec2 \{\cf5 \cb1 \strokec5 \
+\cf2 \cb3 \strokec2   tempC = sensors.getTempCByIndex(\cf7 \strokec7 0\cf2 \strokec2 );\cf5 \cb1 \strokec5 \
+\cf2 \cb3 \strokec2   return tempC;\cf5 \cb1 \strokec5 \
+\cf2 \cb3 \strokec2 \}\cf5 \cb1 \strokec5 \
+\
+\cf2 \cb3 \strokec2 void setup()\{\cf5 \cb1 \strokec5 \
+\
+\cf2 \cb3 \strokec2   Serial.begin(\cf7 \strokec7 921600\cf2 \strokec2 );\cf5 \cb1 \strokec5 \
+\cf2 \cb3 \strokec2   sensors.setOneWire(&oneWire);\cf5 \cb1 \strokec5 \
+\cf2 \cb3 \strokec2   sensors.begin();\cf5 \cb1 \strokec5 \
+\cf2 \cb3 \strokec2   sensors.setResolution(\cf7 \strokec7 12\cf2 \strokec2 );\cf5 \cb1 \strokec5 \
+\cf2 \cb3 \strokec2   sensors.setWaitForConversion(\cf8 \strokec8 false\cf2 \strokec2 );\cf5 \cb1 \strokec5 \
+\
+\cf2 \cb3 \strokec2   delay(\cf7 \strokec7 500\cf2 \strokec2 );\cf6 \strokec6 //Wait for newly restarted system to stabilize\cf5 \cb1 \strokec5 \
+\cf2 \cb3 \strokec2   \cf5 \cb1 \strokec5 \
+\cf2 \cb3 \strokec2 \}\cf5 \cb1 \strokec5 \
+\
+\cf2 \cb3 \strokec2 void loop() \{\cf5 \cb1 \strokec5 \
+\cf2 \cb3 \strokec2   delay(\cf7 \strokec7 1000\cf2 \strokec2 );\cf5 \cb1 \strokec5 \
+\cf2 \cb3 \strokec2   sensors.requestTemperatures();\cf6 \strokec6   // call readings from the addresses\cf5 \cb1 \strokec5 \
+\cf2 \cb3 \strokec2   delay(\cf7 \strokec7 1000\cf2 \strokec2 );\cf5 \cb1 \strokec5 \
+\cf2 \cb3 \strokec2   Temp1 = sensorValue();\cf5 \cb1 \strokec5 \
+\
+\cf2 \cb3 \strokec2   Serial.println(\cf4 \strokec4 "Temp1 = "\cf2 \strokec2 );\cf5 \cb1 \strokec5 \
+\cf2 \cb3 \strokec2   Serial.println(Temp1);\cf5 \cb1 \strokec5 \
+\cf2 \cb3 \strokec2   delay(\cf7 \strokec7 500\cf2 \strokec2 );\cf5 \cb1 \strokec5 \
+\cf2 \cb3 \strokec2 \}\cf5 \cb1 \strokec5 \
+\
+\
+\pard\pardeftab720\partightenfactor0
+\cf5 0x28, 0x65, 0x25, 0xE8, 0x65, 0x5A, 0x64, 0x4D\
+\
+\
+\pard\pardeftab720\partightenfactor0
+\cf2 \cb3 \strokec2 #include \cf4 \strokec4 <OneWire.h>\cf5 \cb1 \strokec5 \
+\cf2 \cb3 \strokec2 #include \cf4 \strokec4 <DallasTemperature.h>\cf5 \cb1 \strokec5 \
+\
+\cf2 \cb3 \strokec2 uint32_t waitTime;\cf5 \cb1 \strokec5 \
+\cf2 \cb3 \strokec2 uint32_t timer;\cf5 \cb1 \strokec5 \
+\cf2 \cb3 \strokec2 const uint8_t busPin = \cf7 \strokec7 32\cf2 \strokec2 ;\cf5 \cb1 \strokec5 \
+\
+\cf2 \cb3 \strokec2 OneWire oneWire(busPin);\cf5 \cb1 \strokec5 \
+\cf2 \cb3 \strokec2 DallasTemperature sensors(&oneWire);\cf5 \cb1 \strokec5 \
+\
+\cf2 \cb3 \strokec2 const DeviceAddress TempSensors[] = \{\cf5 \cb1 \strokec5 \
+\cf2 \cb3 \strokec2   \{ 0x\cf7 \strokec7 28\cf2 \strokec2 , 0x\cf7 \strokec7 65\cf2 \strokec2 , 0x\cf7 \strokec7 25\cf2 \strokec2 , 0x\cf7 \strokec7 E8\cf2 \strokec2 , 0x\cf7 \strokec7 65\cf2 \strokec2 , 0x\cf7 \strokec7 5A\cf2 \strokec2 , 0x\cf7 \strokec7 64\cf2 \strokec2 , 0x\cf7 \strokec7 4D\cf2 \strokec2  \},\cf6 \strokec6    // S01_ColdIntoPWT   // S08_CoolBoxS02\cf5 \cb1 \strokec5 \
+\cf2 \cb3 \strokec2 \};\cf5 \cb1 \strokec5 \
+\
+\cf2 \cb3 \strokec2 void setup() \{\cf5 \cb1 \strokec5 \
+\cf2 \cb3 \strokec2   Serial.begin(\cf7 \strokec7 115200\cf2 \strokec2 );\cf5 \cb1 \strokec5 \
+\cf2 \cb3 \strokec2   sensors.setWaitForConversion(\cf8 \strokec8 false\cf2 \strokec2 );\cf5 \cb1 \strokec5 \
+\cf2 \cb3 \strokec2   sensors.begin();\cf5 \cb1 \strokec5 \
+\cf2 \cb3 \strokec2   waitTime = sensors.millisToWaitForConversion(sensors.getResolution());\cf5 \cb1 \strokec5 \
+\cf2 \cb3 \strokec2   Serial.println(\cf4 \strokec4 "Wait Time : \\n"\cf2 \strokec2 ); Serial.println(waitTime);\cf5 \cb1 \strokec5 \
+\cf2 \cb3 \strokec2   sensors.requestTemperatures();\cf5 \cb1 \strokec5 \
+\cf2 \cb3 \strokec2   timer = millis();\cf5 \cb1 \strokec5 \
+\cf2 \cb3 \strokec2 \}\cf5 \cb1 \strokec5 \
+\
+\cf2 \cb3 \strokec2 void loop() \{\cf5 \cb1 \strokec5 \
+\cf2 \cb3 \strokec2   uint32_t currentTime = millis();\cf5 \cb1 \strokec5 \
+\cf2 \cb3 \strokec2   if (currentTime - timer >= waitTime ) \{\cf5 \cb1 \strokec5 \
+\cf2 \cb3 \strokec2     for (auto &addr : TempSensors) \{\cf5 \cb1 \strokec5 \
+\cf2 \cb3 \strokec2       float sensorTemp = sensors.getTempC(addr);\cf5 \cb1 \strokec5 \
+\cf2 \cb3 \strokec2       Serial.println(sensorTemp);\cf5 \cb1 \strokec5 \
+\cf2 \cb3 \strokec2     \}\cf5 \cb1 \strokec5 \
+\cf2 \cb3 \strokec2     sensors.requestTemperatures();\cf5 \cb1 \strokec5 \
+\cf2 \cb3 \strokec2     timer = currentTime;\cf5 \cb1 \strokec5 \
+\cf2 \cb3 \strokec2     delay(\cf7 \strokec7 100\cf2 \strokec2 );\cf5 \cb1 \strokec5 \
+\cf2 \cb3 \strokec2   \}\cf5 \cb1 \strokec5 \
+\cf2 \cb3 \strokec2   Serial.print(\cf4 \strokec4 "Time : "\cf2 \strokec2 ); Serial.println(currentTime);\cf5 \cb1 \strokec5 \
+\cf2 \cb3 \strokec2 \}\cf5 \cb1 \strokec5 \
+\pard\pardeftab720\partightenfactor0
+\cf5 \
+\
+}
