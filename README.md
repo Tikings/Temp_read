@@ -1,6 +1,6 @@
 # Thermometer project
 
-    This project aimed to make a thermometer to measure the temperature of the Agar in a behavioral experiment in Jovanic's Lab (Behavior and Neural Circuit - NeuroPSI)
+> This project aimed to make a thermometer to measure the temperature of the Agar in a behavioral experiment in Jovanic's Lab (Behavior and Neural Circuit - NeuroPSI)
 
 ## The circuit : 
 
@@ -34,11 +34,14 @@ From here all we need to do is to calibrate the thermometer by computing the $A,
 
 To do that a solution already exists, you just need to have three measure of $(T,R)$ with $T$ in Kelvin and $R$ in Ohms :
 
-We have : $ Y_1 = \frac{1}{T_1} $ , $ Y_2 = \frac{1}{T_2} $ and $ Y_3 = \frac{1}{T_3} $ and $ L_1 = \ln(R_1) $, $ L_2 = \ln(R_2) $ and $ L_3 = \ln(R_3) $
+We have : $Y_1 = \frac{1}{T_1}$ , $Y_2 = \frac{1}{T_2}$ and $Y_3 = \frac{1}{T_3}$ and $L_1 = \ln(R_1)$, $L_2 = \ln(R_2)$ and $L_3 = \ln(R_3)$
 
 The solution of the equation to find the coefficients is the following : 
 
-We first have : $$ a = (\frac{L_2 - L_3}{L_1 - L_2}) \times (L_2^3 - L_1^3) + (L_2^3 - L_3^3) $$ and $$ b = Y_2 - Y_3 - (\frac{L_2 - L_3}{L_1 - L_2}) \times (Y_1 - Y_2)$$ 
+We first have : 
+$$ a = (\frac{L_2 - L_3}{L_1 - L_2}) \times (L_2^3 - L_1^3) + (L_2^3 - L_3^3) $$
+and 
+$$ b = Y_2 - Y_3 - (\frac{L_2 - L_3}{L_1 - L_2}) \times (Y_1 - Y_2)$$ 
 
 From here we have : $$ C = \frac{b}{a} $$
 $$ B = (\frac{1}{L_1 - L_2}) \times [ Y_1 - Y_2 - (L_1^3 - L_2^3) \times C ] $$
