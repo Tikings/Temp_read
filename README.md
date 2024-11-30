@@ -43,9 +43,10 @@ $$a = (\frac{L_2 - L_3}{L_1 - L_2}) \times (L_2^3 - L_1^3) + (L_2^3 - L_3^3)$$
 and 
 $$b = Y_2 - Y_3 - (\frac{L_2 - L_3}{L_1 - L_2}) \times (Y_1 - Y_2)$$ 
 
-From here we have : $$ C = \frac{b}{a} $$
-$$B = (\frac{1}{L_1 - L_2}) \times [ Y_1 - Y_2 - (L_1^3 - L_2^3) \times C ]$$
-$$A = Y_1 - L_1 \times B - L_1^3 \times C$$ 
+From here we have :
+$$C = \frac{b}{a}$$ \\ 
+$$B = (\frac{1}{L_1 - L_2}) \times [ Y_1 - Y_2 - (L_1^3 - L_2^3) \times C ]$$ \\ 
+$$A = Y_1 - L_1 \times B - L_1^3 \times C$$  \\
 
 *** 
 
